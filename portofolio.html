@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nama Desainer - Portofolio Desainer Grafis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* bg-gray-900 */
+            color: #d1d5db; /* text-gray-300 */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero-gradient-text {
+            background: linear-gradient(to right, #38bdf8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+        }
+        .nav-link.active {
+            color: #38bdf8; /* text-sky-400 */
+        }
+        
+        /* --- Gaya dan Animasi Khusus Mobile --- */
+
+        /* Kontainer menu mobile yang akan digeser */
+        #mobile-menu {
+            transform: translateY(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        /* Kelas 'menu-open' akan ditambahkan oleh JS untuk menampilkan menu */
+        #mobile-menu.menu-open {
+            transform: translateY(0);
+        }
+        /* Mencegah body di-scroll saat menu mobile terbuka */
+        body.mobile-menu-is-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Header & Navigasi -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white nav-link" data-page="hero">ND.</a>
+            
+            <!-- Navigasi Desktop (Dropdown) -->
+            <div class="hidden md:block relative">
+                <button id="desktop-menu-button" class="flex items-center space-x-2 border border-gray-700 px-4 py-2 rounded-full hover:bg-gray-800 transition-colors focus:outline-none">
+                    <span>Menu</span>
+                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" id="desktop-menu-icon"></i>
+                </button>
+                <div id="desktop-dropdown" class="hidden absolute right-0 mt-2 w-48 bg-gray-800/95 backdrop-blur-lg rounded-lg shadow-xl py-2 z-50 border border-gray-700">
+                    <a href="#" class="nav-link block px-4 py-2 text-gray-300 hover:bg-sky-500/20" data-page="karya">Karya</a>
+                    <a href="#" class="nav-link block px-4 py-2 text-gray-300 hover:bg-sky-500/20" data-page="tentang">Tentang</a>
+                    <a href="#" class="nav-link block px-4 py-2 text-gray-300 hover:bg-sky-500/20" data-page="layanan">Layanan</a>
+                    <a href="#" class="nav-link block px-4 py-2 text-gray-300 hover:bg-sky-500/20" data-page="kontak">Kontak Saya</a>
+                </div>
+            </div>
+
+            <!-- Tombol Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden z-50">
+                <i data-lucide="menu" class="w-6 h-6 text-white"></i>
+            </button>
+        </nav>
+    </header>
+    
+    <!-- Menu Mobile (Sekarang di luar header untuk positioning yang lebih baik) -->
+    <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-full h-full bg-gray-900 z-40 pt-24 p-6">
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#" class="nav-link text-2xl font-semibold" data-page="karya">Karya</a>
+            <a href="#" class="nav-link text-2xl font-semibold" data-page="tentang">Tentang</a>
+            <a href="#" class="nav-link text-2xl font-semibold" data-page="layanan">Layanan</a>
+            <a href="#" class="nav-link text-2xl font-semibold" data-page="kontak">Kontak Saya</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Konten Halaman -->
+        <section id="hero" class="page-content min-h-screen flex items-center justify-center text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-4">
+                    Mengubah Ide Menjadi<br><span class="hero-gradient-text">Karya Visual Memukau</span>
+                </h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">
+                    Halo! Saya [Nama Desainer], seorang desainer grafis dengan hasrat untuk menciptakan identitas brand yang kuat dan pengalaman digital yang menarik.
+                </p>
+                <a href="#" id="hero-cta-button" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105" data-page="karya">
+                    Lihat Portofolio Saya
+                </a>
+            </div>
+        </section>
+
+        <section id="karya" class="page-content hidden py-24">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-center text-white mb-12">Karya Pilihan</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden card-hover-effect"><img src="https://images.unsplash.com/photo-1611149998822-6913341b7e23?q=80&w=800&h=600&auto=format&fit=crop" alt="Proyek branding untuk merek kopi" class="w-full h-60 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Branding Kopi Nusantara</h3><p class="text-gray-400">Pengembangan identitas visual lengkap untuk merek kopi lokal.</p></div></div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden card-hover-effect"><img src="https://images.unsplash.com/photo-1581287053822-fd7bf4f4bf3f?q=80&w=800&h=600&auto=format&fit=crop" alt="Desain antarmuka aplikasi travel di ponsel" class="w-full h-60 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Desain Aplikasi Travel</h3><p class="text-gray-400">Merancang antarmuka yang intuitif untuk aplikasi pemesanan perjalanan.</p></div></div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden card-hover-effect"><img src="https://images.unsplash.com/photo-1626544827763-d516dce335e2?q=80&w=800&h=600&auto=format&fit=crop" alt="Ilustrasi digital artistik" class="w-full h-60 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Ilustrasi Editorial</h3><p class="text-gray-400">Serangkaian ilustrasi untuk artikel majalah digital ternama.</p></div></div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden card-hover-effect"><img src="https://images.unsplash.com/photo-1624976423063-999307b27c23?q=80&w=800&h=600&auto=format&fit=crop" alt="Desain kemasan produk kosmetik yang elegan" class="w-full h-60 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Desain Kemasan Produk</h3><p class="text-gray-400">Membuat desain kemasan yang menarik untuk produk kecantikan.</p></div></div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden card-hover-effect"><img src="https://images.unsplash.com/photo-1593404394337-37e2a9d3a436?q=80&w=800&h=600&auto=format&fit=crop" alt="Desain konten untuk kampanye media sosial" class="w-full h-60 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Konten Media Sosial</h3><p class="text-gray-400">Desain visual untuk kampanye promosi di platform media sosial.</p></div></div>
+                    <div class="bg-gray-800 rounded-lg overflow-hidden card-hover-effect"><img src="https://images.unsplash.com/photo-1600132806376-11c5691a385f?q=80&w=800&h=600&auto=format&fit=crop" alt="Logo modern di atas kartu nama" class="w-full h-60 object-cover"><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Logo Startup Teknologi</h3><p class="text-gray-400">Menciptakan logo yang modern dan filosofis untuk startup baru.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tentang" class="page-content hidden py-24"><div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12"><div class="md:w-1/2"><img src="https://images.unsplash.com/photo-1557053910-d9eadeed1c58?q=80&w=800&h=800&auto=format&fit=crop" alt="Foto profil seorang desainer wanita profesional" class="rounded-lg shadow-2xl w-full max-w-md mx-auto"></div><div class="md:w-1/2 text-center md:text-left"><h2 class="text-4xl font-bold text-white mb-4">Tentang Saya</h2><p class="mb-4">Saya adalah seorang desainer visual yang bersemangat dalam memecahkan masalah melalui estetika. Dengan pengalaman lebih dari 5 tahun, saya telah membantu banyak klien, dari startup hingga perusahaan besar, untuk membangun kehadiran visual yang kuat dan berkomunikasi lebih efektif dengan audiens mereka.</p><p>Keahlian saya meliputi desain branding, desain UI/UX, dan ilustrasi digital. Saya percaya bahwa desain yang baik bukan hanya tentang penampilan, tetapi juga tentang fungsi dan cerita.</p></div></div></section>
+        <section id="layanan" class="page-content hidden py-24"><div class="container mx-auto px-6"><h2 class="text-4xl font-bold text-center text-white mb-12">Layanan yang Saya Tawarkan</h2><div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"><div class="bg-gray-800 p-8 rounded-lg card-hover-effect"><i data-lucide="gem" class="w-12 h-12 mx-auto text-sky-400 mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Branding & Identitas</h3><p class="text-gray-400">Desain logo, panduan gaya, dan materi pemasaran yang konsisten.</p></div><div class="bg-gray-800 p-8 rounded-lg card-hover-effect"><i data-lucide="smartphone" class="w-12 h-12 mx-auto text-sky-400 mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Desain UI/UX</h3><p class="text-gray-400">Merancang antarmuka aplikasi web dan mobile yang fungsional dan indah.</p></div><div class="bg-gray-800 p-8 rounded-lg card-hover-effect"><i data-lucide="pen-tool" class="w-12 h-12 mx-auto text-sky-400 mb-4"></i><h3 class="text-xl font-bold text-white mb-2">Ilustrasi Digital</h3><p class="text-gray-400">Membuat ilustrasi kustom untuk ikon, maskot, dan konten editorial.</p></div></div></div></section>
+        <section id="kontak" class="page-content hidden py-24"><div class="container mx-auto px-6 text-center"><div class="bg-gray-800 max-w-2xl mx-auto p-8 md:p-12 rounded-lg shadow-2xl"><h2 class="text-4xl font-bold text-white mb-4">Tertarik Bekerja Sama?</h2><p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">Saya selalu terbuka untuk proyek baru dan kolaborasi yang menarik. Jangan ragu untuk menghubungi saya.</p><a href="mailto:email@anda.com" class="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105">kirim.email@saya.com</a></div></div></section>
+    </main>
+
+    <footer class="bg-gray-900 py-8"><div class="container mx-auto px-6 text-center text-gray-400"><div class="flex justify-center space-x-6 mb-4"><a href="#" class="hover:text-sky-400"><i data-lucide="instagram" class="w-6 h-6"></i></a><a href="#" class="hover:text-sky-400"><i data-lucide="linkedin" class="w-6 h-6"></i></a><a href="#" class="hover:text-sky-400"><i data-lucide="dribbble" class="w-6 h-6"></i></a></div><p>&copy; 2025 [Nama Desainer]. Dibuat dengan penuh semangat.</p></div></footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Mengaktifkan Ikon ---
+            lucide.createIcons();
+
+            // --- Elemen-elemen ---
+            const body = document.body;
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageContents = document.querySelectorAll('.page-content');
+            const heroCtaButton = document.getElementById('hero-cta-button');
+            
+            // Elemen khusus mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuIcon = mobileMenuButton.querySelector('i');
+
+            // Elemen khusus desktop
+            const desktopMenuButton = document.getElementById('desktop-menu-button');
+            const desktopDropdown = document.getElementById('desktop-dropdown');
+            const desktopMenuIcon = document.getElementById('desktop-menu-icon');
+
+            // --- Fungsi untuk Menampilkan Halaman ---
+            function showPage(pageId) {
+                pageContents.forEach(page => page.classList.add('hidden'));
+                const activePage = document.getElementById(pageId);
+                if (activePage) activePage.classList.remove('hidden');
+                
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.page === pageId);
+                });
+                
+                window.scrollTo(0, 0);
+            }
+
+            // --- Fungsi untuk Mengatur Menu Mobile ---
+            function toggleMobileMenu() {
+                const isMenuOpen = mobileMenu.classList.toggle('menu-open');
+                body.classList.toggle('mobile-menu-is-open', isMenuOpen);
+
+                // Mengganti ikon antara 'menu' dan 'x'
+                if (isMenuOpen) {
+                    mobileMenuIcon.setAttribute('data-lucide', 'x');
+                } else {
+                    mobileMenuIcon.setAttribute('data-lucide', 'menu');
+                }
+                lucide.createIcons(); // Render ulang ikon yang berubah
+            }
+
+            // --- Event Listeners ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    showPage(this.dataset.page);
+                    
+                    // Tutup menu jika terbuka (baik mobile maupun desktop)
+                    if (body.classList.contains('mobile-menu-is-open')) {
+                        toggleMobileMenu();
+                    }
+                    if (desktopDropdown && !desktopDropdown.classList.contains('hidden')) {
+                        desktopDropdown.classList.add('hidden');
+                        desktopMenuIcon.classList.remove('rotate-180');
+                    }
+                });
+            });
+            
+            heroCtaButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                showPage(this.dataset.page);
+            });
+
+            // --- Logika Khusus Mobile ---
+            mobileMenuButton.addEventListener('click', toggleMobileMenu);
+
+            // --- Logika Khusus Desktop ---
+            if (desktopMenuButton) {
+                desktopMenuButton.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    desktopDropdown.classList.toggle('hidden');
+                    desktopMenuIcon.classList.toggle('rotate-180');
+                });
+            }
+
+            window.addEventListener('click', function() {
+                if (desktopDropdown && !desktopDropdown.classList.contains('hidden')) {
+                    desktopDropdown.classList.add('hidden');
+                    desktopMenuIcon.classList.remove('rotate-180');
+                }
+            });
+
+            // --- Inisialisasi ---
+            showPage('hero');
+        });
+    </script>
+
+</body>
+</html>
